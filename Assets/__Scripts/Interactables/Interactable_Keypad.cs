@@ -11,5 +11,6 @@ public class Interactable_Keypad : MonoBehaviour, IInteractable
     public void Interact()
     {
         PlayerData.instance.OnAlarmDeactivate.Invoke();
+        Destroy(this);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AlarmManager : MonoBehaviour
 {
     private List<Light> alarmLightSources = new List<Light>(); //List of all the alarm Lights
-    [SerializeField] AudioSource alarmAudioSource; // Assign the AudioSource in the Inspector
+    private AudioSource alarmAudioSource; // Assign the AudioSource in the Inspector
 
     [SerializeField] float cooldownTime; //time between alarm 
     private bool alarmActive = true;
@@ -15,7 +15,7 @@ public class AlarmManager : MonoBehaviour
     void Start()
     {
         PlayerData.instance.OnAlarmDeactivate.AddListener(TurnOffAlarm);
-
+        alarmAudioSource = GetComponent<AudioSource>();
         //find the alarm Lights
         FindLights();
         // Start blinking when the script starts
@@ -31,7 +31,7 @@ public class AlarmManager : MonoBehaviour
     IEnumerator Blink()
     {
         bool lightsOn = true;
-        while (alarmActive)
+        while (true)
         {
             // turn lights on and off
             if (alarmLightSources != null)
@@ -44,13 +44,14 @@ public class AlarmManager : MonoBehaviour
             }
 
             // Play the alarm sound when the GameObject is enabled
-            if (alarmLightSources != null && lightsOn)
+            if (lightsOn)
             {
                 if (alarmAudioSource != null)
                 {
                     alarmAudioSource.Play();
                 }
             }
+            if (!lightsOn) alarmAudioSource.Stop();
 
             // Wait for a short duration before toggling again
             yield return new WaitForSeconds(cooldownTime);
@@ -63,7 +64,8 @@ public class AlarmManager : MonoBehaviour
             alarmLightSources[i].enabled = false;
         }
         alarmLightMaterial.DisableKeyword("_EMISSION");
-        alarmActive = false;
+        StopAllCoroutines();
+        alarmAudioSource.Stop();
     }
     private void OnDestroy()
     {

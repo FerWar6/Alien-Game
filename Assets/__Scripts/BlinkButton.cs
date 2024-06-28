@@ -6,7 +6,6 @@ public class BlinkButton : MonoBehaviour
     public Material blinkingMaterial; // Assign the Material with Emission in the Inspector
     public AudioSource audioSource;   // Assign the AudioSource in the Inspector
     public AudioClip blinkSound;      // Assign the sound clip in the Inspector
-    private bool isBlinking = true;   // Start with blinking enabled
 
     void Start()
     {
