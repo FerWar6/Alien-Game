@@ -389,6 +389,9 @@ MonoBehaviour:
   OnBreakerActive:
     m_PersistentCalls:
       m_Calls: []
+  OnAlarmDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &23127986
 Transform:
   m_ObjectHideFlags: 0
@@ -1336,8 +1339,6 @@ GameObject:
   m_Component:
   - component: {fileID: 441938152}
   - component: {fileID: 441938153}
-  - component: {fileID: 441938154}
-  - component: {fileID: 441938155}
   - component: {fileID: 441938156}
   m_Layer: 3
   m_Name: BreakerHitbox
@@ -1374,37 +1375,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.004506279, y: 0.0019872095, z: 0.0060373447}
   m_Center: {x: -0.004991746, y: -0.009546437, z: 0.005740823}
---- !u!114 &441938154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441938151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41673f1bcdcc18a40ab6737ebcb7aed0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToActivate: {fileID: 0}
-  activationAudioSource: {fileID: 0}
-  maxDistance: 1
-  emissiveMat: {fileID: 2100000, guid: 335d188c06b4db341a6326961fce005c, type: 2}
-  hasBeenActivated: 0
---- !u!114 &441938155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 441938151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b4cff7f016b03c43befbe52dae9c9a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayText: {fileID: 0}
-  maxDistance: 1
 --- !u!114 &441938156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3910,7 +3880,7 @@ GameObject:
   - component: {fileID: 1566124348}
   - component: {fileID: 1566124350}
   - component: {fileID: 1566124351}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AlarmButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3940,7 +3910,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566124346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7251000e26dbc9f40b8e327e356524d3, type: 3}
   m_Name: 
@@ -3950,7 +3920,6 @@ MonoBehaviour:
   buttonBeep: {fileID: 7983347}
   blinkButton: {fileID: 1566124350}
   pressText: {fileID: 0}
-  showTextScript: {fileID: 1566124351}
   blinkingMaterial: {fileID: 2100000, guid: 49555750179ce604e892b0b5259149eb, type: 2}
 --- !u!135 &1566124349
 SphereCollider:
@@ -3972,7 +3941,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566124346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2132b415ef2713478d7a633cbc86a37, type: 3}
   m_Name: 
@@ -3989,11 +3958,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1566124346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b4cff7f016b03c43befbe52dae9c9a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 12ec098e061e198469bc464ced3efad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayText: {fileID: 0}
-  maxDistance: 1
+  message: E to turn off alarm
 --- !u!1 &1613035715
 GameObject:
   m_ObjectHideFlags: 0
@@ -4136,6 +4104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alarmAudioSource: {fileID: 1756752692}
   cooldownTime: 1.5
+  alarmLightMaterial: {fileID: 2100000, guid: d336bf2b00a35434c9527e1febde6d5b, type: 2}
 --- !u!1 &1624706898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4923161334455642368, guid: b844c50048ecae64bb99f09594e86689, type: 3}
@@ -5673,21 +5642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc0d8bc231b84b44f88c85ade642688a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onTurnOnLights:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1993344505}
-        m_TargetAssemblyTypeName: ShipLightsManager, Assembly-CSharp
-        m_MethodName: TurnOnLights
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  shipLightMaterial: {fileID: 2100000, guid: 335d188c06b4db341a6326961fce005c, type: 2}
 --- !u!1 &2029853364
 GameObject:
   m_ObjectHideFlags: 0
@@ -6188,7 +6143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773621974234853}
   m_LocalRotation: {x: -0, y: -0.89355004, z: -0, w: -0.4489637}
-  m_LocalPosition: {x: -17.74, y: -0.167, z: -21.08}
+  m_LocalPosition: {x: 25.69, y: -0.167, z: -3.8}
   m_LocalScale: {x: 0.7000001, y: 0.9, z: 0.7000001}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6406,7 +6361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceThreshold: 0.15
-  isGrounded: 0
+  isGrounded: 1
 --- !u!114 &114657889202785331
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,8 +23,9 @@ public class PlayerData : MonoBehaviour
     public UnityEvent OnPlayerPosSet = new UnityEvent();
     public UnityEvent OnInventoryUpdate = new UnityEvent();
     public UnityEvent OnBreakerActive = new UnityEvent();
+    public UnityEvent OnAlarmDeactivate = new UnityEvent();
 
-    
+
     // Awake is called when the script instance is being loaded
     private void Awake()
     {

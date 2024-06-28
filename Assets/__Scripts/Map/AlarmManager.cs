@@ -8,9 +8,14 @@ public class AlarmManager : MonoBehaviour
     [SerializeField] AudioSource alarmAudioSource; // Assign the AudioSource in the Inspector
 
     [SerializeField] float cooldownTime; //time between alarm 
+    private bool alarmActive = true;
+
+    [SerializeField] Material alarmLightMaterial; //time between alarm 
 
     void Start()
     {
+        PlayerData.instance.OnAlarmDeactivate.AddListener(TurnOffAlarm);
+
         //find the alarm Lights
         FindLights();
         // Start blinking when the script starts
@@ -26,7 +31,7 @@ public class AlarmManager : MonoBehaviour
     IEnumerator Blink()
     {
         bool lightsOn = true;
-        while (true)
+        while (alarmActive)
         {
             // turn lights on and off
             if (alarmLightSources != null)
@@ -50,5 +55,18 @@ public class AlarmManager : MonoBehaviour
             // Wait for a short duration before toggling again
             yield return new WaitForSeconds(cooldownTime);
         }
+    }
+    private void TurnOffAlarm()
+    {
+        for (int i = 0; i < alarmLightSources.Count; i++)
+        {
+            alarmLightSources[i].enabled = false;
+        }
+        alarmLightMaterial.DisableKeyword("_EMISSION");
+        alarmActive = false;
+    }
+    private void OnDestroy()
+    {
+        PlayerData.instance.OnAlarmDeactivate.RemoveListener(TurnOffAlarm);
     }
 }
