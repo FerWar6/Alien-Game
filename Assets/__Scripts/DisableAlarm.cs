@@ -9,7 +9,6 @@ public class DisableAlarm : MonoBehaviour
     public GameObject buttonBeep;
     public BlinkButton blinkButton;
     public Text pressText;
-    public ShowText showTextScript;
     public Material blinkingMaterial;
     void Update()
     {
@@ -34,7 +33,6 @@ public class DisableAlarm : MonoBehaviour
                         blinkButtonScript.enabled = false;
                         buttonBeep.SetActive(false);
                         pressText.enabled = false;
-                        showTextScript.enabled = false;
                         blinkingMaterial.DisableKeyword("_EMISSION");
 
                     }
