@@ -3,34 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TestPuzzle : MonoBehaviour
+public class PuzzleSliderPuzzleManager : MonoBehaviour
 {
+    [SerializeField] float margin = 0.025f;
     [SerializeField] private int numberOfSliders;
     [SerializeField] private GameObject sliderPrefab;
-    [SerializeField] private Transform sliderParent;
 
     private List<Slider> sliders = new List<Slider>();
-    private List<Image> indicators = new List<Image>();
+    private List<PuzzleSliderManager> sliderDataManagers = new List<PuzzleSliderManager>();
     private List<float> targetValues = new List<float>();
     private List<float> previousValues = new List<float>();
 
-    private float margin = 0.05f; // Margin value for checking proximity
+    
     private bool isChanging = false; // A flag to lock event handling
+    private int numberOfNeighbours;
 
     void Start()
     {
-        GeneratePuzzle(numberOfSliders);
+        CalculateNumOfNeighbours();
+        GeneratePuzzle();
     }
 
-    private void GeneratePuzzle(int amountOfSliders)
+    private void GeneratePuzzle()
     {
         // Loop to create and initialize sliders
-        for (int i = 0; i < amountOfSliders; i++)
+        for (int i = 0; i < numberOfSliders; i++)
         {
             // Instantiate the slider prefab
-            GameObject sliderObj = Instantiate(sliderPrefab, sliderParent);
+            GameObject sliderObj = Instantiate(sliderPrefab, transform);
             Slider slider = sliderObj.GetComponent<Slider>();
-            Image indicator = sliderObj.GetComponentInChildren<Image>();
+            PuzzleSliderManager sliderman = slider.GetComponent<PuzzleSliderManager>();
 
             // Assign a random initial value to the slider
             slider.value = Random.value;
@@ -40,20 +42,20 @@ public class TestPuzzle : MonoBehaviour
 
             // Set the position of the slider
             RectTransform sliderRectTransform = sliderObj.GetComponent<RectTransform>();
-            sliderRectTransform.anchoredPosition = new Vector2((i * 60) - 400, 0);
+            sliderRectTransform.anchoredPosition = new Vector2(0, 0);
 
+            sliderman.SetNeighbors(i, numberOfSliders, numberOfNeighbours);
             // Store references
             sliders.Add(slider);
-            indicators.Add(indicator);
+            sliderDataManagers.Add(sliderman);
             targetValues.Add(targetValue);
             previousValues.Add(slider.value);
-
             // Subscribe to the onValueChanged event
             int index = i; // Capture the current value of i for the closure
             slider.onValueChanged.AddListener((newValue) => OnSliderValueChanged(index, newValue));
-        }
 
-        Debug.Log("Puzzle generated with " + numberOfSliders + " sliders.");
+
+        }
     }
 
     private void OnSliderValueChanged(int index, float newValue)
@@ -66,50 +68,11 @@ public class TestPuzzle : MonoBehaviour
 
         // Update the previous value
         previousValues[index] = newValue;
-
-        // Adjust three random other sliders' values
-        List<int> randomIndices = GetUniqueRandomIndices(index);
-        foreach (int randomIndex in randomIndices)
+        for (int i = 0; i < numberOfNeighbours; i++)
         {
-            sliders[randomIndex].value += difference * GetRandomFactor();
+            sliders[sliderDataManagers[index].neighbours[i]].value += difference / (2 + i);
         }
-
         isChanging = false;
-    }
-
-    private List<int> GetUniqueRandomIndices(int excludeIndex)
-    {
-        List<int> randomIndices = new List<int>();
-        while (randomIndices.Count < 3)
-        {
-            int randomIndex = Random.Range(0, sliders.Count);
-            if (randomIndex != excludeIndex && !randomIndices.Contains(randomIndex))
-            {
-                randomIndices.Add(randomIndex);
-            }
-        }
-        return randomIndices;
-    }
-
-    private float GetRandomFactor()
-    {
-        float randomFactor = 0f;
-        float randomValue = Random.value;
-
-        if (randomValue < 0.5f)
-        {
-            randomFactor = 0.5f;
-        }
-        else if (randomValue < 0.8f)
-        {
-            randomFactor = 0.3f;
-        }
-        else
-        {
-            randomFactor = 0.1f;
-        }
-
-        return randomFactor;
     }
 
     private void Update()
@@ -120,12 +83,18 @@ public class TestPuzzle : MonoBehaviour
             float newValue = sliders[i].value;
             if (Mathf.Abs(newValue - targetValues[i]) <= margin)
             {
-                indicators[i].color = Color.green;
+                sliderDataManagers[i].switchOn = true;
             }
-            else
-            {
-                indicators[i].color = Color.red;
-            }
+            else { sliderDataManagers[i].switchOn = false; }
         }
+    }
+    private void CalculateNumOfNeighbours()
+    {
+        if (numberOfSliders <= 4)
+            numberOfNeighbours = 2;
+        else if (numberOfSliders <= 7)
+            numberOfNeighbours = 3;
+        else
+            numberOfNeighbours = 4;
     }
 }

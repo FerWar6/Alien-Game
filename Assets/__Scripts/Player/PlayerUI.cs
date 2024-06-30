@@ -13,7 +13,6 @@ public class PlayerUI : MonoBehaviour
         if(promptText != null)
         {
             promptText.text = promptMessage;
-
         }
     }
 

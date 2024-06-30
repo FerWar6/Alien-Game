@@ -301,10 +301,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 983728860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b817d6bab27dc254499c82bd8933e216, type: 3}
+  m_Script: {fileID: 11500000, guid: c67cbcf12c9ba324698baff2c56bc2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfSliders: 6
+  numberOfSliders: 4
   sliderPrefab: {fileID: 248679569484683646, guid: b3a65ae0d7fe99248afed703ee74735d, type: 3}
   sliderParent: {fileID: 983728864}
 --- !u!1 &1158505367

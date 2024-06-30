@@ -2,25 +2,21 @@
 
 public class FirstPersonLook : MonoBehaviour
 {
-    [SerializeField]
-    Transform character;
-    public float sensitivity = 2;
-    public float smoothing = 1.5f;
+    [SerializeField] private Transform character;
+    [SerializeField] private float sensitivity = 2;
+    [SerializeField] private float smoothing = 1.5f;
+
+    public Transform baseCamPos;
 
     Vector2 velocity;
     Vector2 frameVelocity;
 
 
-    void Reset()
-    {
-        // Get the character from the FirstPersonMovement in parents.
-        character = GetComponentInParent<FirstPersonMovement>().transform;
-    }
-
     void Start()
     {
         // Lock the mouse cursor to the game screen.
         Cursor.lockState = CursorLockMode.Locked;
+        character = PlayerData.instance.playerPos;
     }
 
     void Update()

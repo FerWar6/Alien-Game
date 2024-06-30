@@ -10,11 +10,11 @@ public class PlayerData : MonoBehaviour
     public static PlayerData instance { get; private set; }
 
     // Transform representing the player's position
-    public Transform playerPos;
+    [HideInInspector] public Transform playerPos;
 
     // Player's health value
     public int playerHealth = 100;
-
+    public bool inUI;
     // List to keep track of inventory items (GameObjects)
     public List<GameObject> inventoryGameobjects;
 
@@ -25,6 +25,7 @@ public class PlayerData : MonoBehaviour
     public UnityEvent OnBreakerActive = new UnityEvent();
     public UnityEvent OnAlarmDeactivate = new UnityEvent();
 
+    public UnityEvent<Transform> OnEnterUI = new UnityEvent<Transform>();
 
     // Awake is called when the script instance is being loaded
     private void Awake()
