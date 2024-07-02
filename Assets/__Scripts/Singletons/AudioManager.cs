@@ -56,7 +56,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // Method to play an audio clip at a specified position
-    public void SetAudioClip(AudioClip clip, Vector3 position, bool is2D = false)
+    public void SetAudioClip(AudioClip clip, Vector3 position, float volume = 1, bool is2D = false)
     {
         // Find an available audio source
         GameObject openAudioSource = FindEmptyAudioClip();
@@ -69,6 +69,7 @@ public class AudioManager : MonoBehaviour
             // Get the AudioSource component and configure it
             AudioSource source = openAudioSource.GetComponent<AudioSource>();
             if (is2D) source.spatialBlend = 0; // Set to 2D if specified
+            source.volume = volume;
             source.clip = clip;
             source.Play();
 

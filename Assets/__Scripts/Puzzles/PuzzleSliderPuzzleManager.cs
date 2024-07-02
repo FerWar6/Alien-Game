@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PuzzleSliderPuzzleManager : MonoBehaviour
 {
-    [SerializeField] float margin = 0.025f;
+/*    [SerializeField] float margin = 0.025f;
     [SerializeField] private int numberOfSliders;
     [SerializeField] private GameObject sliderPrefab;
 
@@ -96,5 +96,5 @@ public class PuzzleSliderPuzzleManager : MonoBehaviour
             numberOfNeighbours = 3;
         else
             numberOfNeighbours = 4;
-    }
+    }*/
 }

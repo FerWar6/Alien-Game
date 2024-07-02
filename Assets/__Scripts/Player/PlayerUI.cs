@@ -15,5 +15,8 @@ public class PlayerUI : MonoBehaviour
             promptText.text = promptMessage;
         }
     }
-
+    public void Update()
+    {
+        promptText.enabled = !PlayerData.instance.inUI;
+    }
 }

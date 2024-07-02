@@ -12,7 +12,7 @@ public class Interactable_BreakerSwitch : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        AudioManager.instance.SetAudioClip(activationClip, transform.position, true);
+        AudioManager.instance.SetAudioClip(activationClip, transform.position, 1, true);
         PlayerData.instance.OnBreakerActive.Invoke();
         Destroy(this);
     }
