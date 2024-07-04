@@ -14,7 +14,6 @@ public class Interactable_Terminal : MonoBehaviour, IInteractable
     private void Update()
     {
         UICamPos = GetComponentInChildren<UICamPos>().transform;
-        message = PlayerData.instance.inUI ? null : "E to start puzzle";
     }
     public void Interact()
     {

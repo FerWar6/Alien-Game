@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class PuzzleSliderManager : MonoBehaviour
+public class Puzzle_SliderData : MonoBehaviour
 {
     [HideInInspector] public List<int> neighbours = new List<int>();
     [HideInInspector] public bool switchOn = false;
@@ -16,11 +16,13 @@ public class PuzzleSliderManager : MonoBehaviour
     private Image indicator;
     private void Start()
     {
-        //indicator = FindInChildren(transform, "indicator");
         indicator = GetComponentInChildren<Image>();
     }
-    public void SetNeighbors(int sliderIndex, int numberOfSliders, int numberOfNeighbours)
+    public void ActivateSlider(int sliderIndex, int numberOfSliders, int numberOfNeighbours)
     {
+        GetComponent<Slider>().value = Random.value;
+        targetValue = Random.value;
+
         List<int> sliderNumbers = new List<int>();
         for (int i = 0; i < numberOfSliders; i++)
         {
@@ -40,7 +42,7 @@ public class PuzzleSliderManager : MonoBehaviour
     {
         if (switchOn)
         {
-            if(indicator.color == Color.red) AudioManager.instance.SetAudioClip(switchOnSound, transform.position, .2f);
+            if (indicator.color == Color.red) AudioManager.instance.SetAudioClip(switchOnSound, transform.position, .2f);
             indicator.color = Color.green;
         }
         else
@@ -49,21 +51,8 @@ public class PuzzleSliderManager : MonoBehaviour
             indicator.color = Color.red;
         }
     }
-    private GameObject FindInChildren(Transform parent, string name)
+    public void DisableSlider()
     {
-        foreach (Transform child in transform)
-        {
-            if (child.name == name)
-            {
-                return child.gameObject;
-            }
-            GameObject result = FindInChildren(child, name);
-            if (result != null)
-            {
-                return result;
-            }
-        }
-        return null;
+        Destroy(this);
     }
 }
-

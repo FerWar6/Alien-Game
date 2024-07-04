@@ -26,6 +26,7 @@ public class PlayerData : MonoBehaviour
     public UnityEvent OnAlarmDeactivate = new UnityEvent();
 
     public UnityEvent<Transform> OnEnterUI = new UnityEvent<Transform>();
+    public UnityEvent OnExitUI = new UnityEvent();
 
     // Awake is called when the script instance is being loaded
     private void Awake()

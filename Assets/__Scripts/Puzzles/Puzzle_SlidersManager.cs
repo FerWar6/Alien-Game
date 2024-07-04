@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine.Events;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderPuzzleManager : MonoBehaviour
+public class Puzzle_SlidersManager : MonoBehaviour
 {
-    [SerializeField] float margin = 0.025f;
+    [HideInInspector] public UnityEvent<int> OnRowCompleted = new UnityEvent<int>();
+    [HideInInspector] public int rowIndex;
 
-    List<GameObject> puzzleSliders = new List<GameObject>();
-    private List<PuzzleSliderManager> sliderDataManagers = new List<PuzzleSliderManager>();
+    private List<GameObject> puzzleSliders = new List<GameObject>();
+    private List<Puzzle_SliderData> sliderDataManagers = new List<Puzzle_SliderData>();
     private List<float> previousValues = new List<float>();
 
+    private float margin = 0.075f;
+    private bool isSliderMoving = false;
+    private int numberOfNeighbours = 2;
 
-    private bool isChanging = false;
-    private int numberOfNeighbours;
-
+    [HideInInspector] public bool puzzleCompleted = false;
     void Start()
     {
         CreatePuzzle();
@@ -26,50 +30,46 @@ public class SliderPuzzleManager : MonoBehaviour
         {
             puzzleSliders.Add(child.gameObject);
         }
-        numberOfNeighbours = puzzleSliders.Count <= 4 ? 2 : 3;
-        // Loop to create and initialize sliders
         for (int i = 0; i < puzzleSliders.Count; i++)
         {
             Slider slider = puzzleSliders[i].GetComponent<Slider>();
-            PuzzleSliderManager sliderman = slider.GetComponent<PuzzleSliderManager>();
+            Puzzle_SliderData sliderman = slider.GetComponent<Puzzle_SliderData>();
 
-            slider.value = Random.value;
-            float targetValue = Random.value;
-
-            sliderman.SetNeighbors(i, puzzleSliders.Count, numberOfNeighbours);
-            sliderman.targetValue = targetValue;
+            sliderman.ActivateSlider(i, puzzleSliders.Count, numberOfNeighbours);
             sliderDataManagers.Add(sliderman);
             previousValues.Add(slider.value);
 
-            // Subscribe to the onValueChanged event
-            int index = i; // Capture the current value of i for the closure
+            int index = i;
             slider.onValueChanged.AddListener((newValue) => OnSliderValueChanged(index, newValue));
         }
     }
 
     private void OnSliderValueChanged(int index, float newValue)
     {
-        if (isChanging) return;
-        isChanging = true;
+        if (isSliderMoving) return;
+        isSliderMoving = true;
 
         float previousValue = previousValues[index];
         float difference = newValue - previousValue;
 
         List<float> multipliers = new List<float>();
-        multipliers.Add(1.5f);
-        multipliers.Add(-0.75f);
-        multipliers.Add(0.75f);
+        multipliers.Add(2f);
+        multipliers.Add(-0.5f);
         previousValues[index] = newValue;
         for (int i = 0; i < numberOfNeighbours; i++)
         {
             puzzleSliders[sliderDataManagers[index].neighbours[i]].GetComponent<Slider>().value += difference / multipliers[i];
         }
-        isChanging = false;
+        isSliderMoving = false;
     }
 
-    private void Update()
+    void Update()
     {
-        // Check if the color needs to be changed for every slider on update
+        CheckSliders();
+    }
+
+    private void CheckSliders()
+    {
         for (int i = 0; i < puzzleSliders.Count; i++)
         {
             float newValue = puzzleSliders[i].GetComponent<Slider>().value;
@@ -77,7 +77,20 @@ public class SliderPuzzleManager : MonoBehaviour
             {
                 sliderDataManagers[i].switchOn = true;
             }
-            else { sliderDataManagers[i].switchOn = false; }
+            else
+            {
+                sliderDataManagers[i].switchOn = false;
+            }
         }
+
+        if (AreAllSwitchesOn())
+        {
+            OnRowCompleted.Invoke(rowIndex);
+        }
+    }
+
+    private bool AreAllSwitchesOn()
+    {
+        return sliderDataManagers.All(sdm => sdm.switchOn);
     }
 }
