@@ -14,7 +14,6 @@ public class Puzzle_SlidersManager : MonoBehaviour
     private List<Puzzle_SliderData> sliderDataManagers = new List<Puzzle_SliderData>();
     private List<float> previousValues = new List<float>();
 
-    private float margin = 0.075f;
     private bool isSliderMoving = false;
     private int numberOfNeighbours = 2;
 
@@ -61,32 +60,6 @@ public class Puzzle_SlidersManager : MonoBehaviour
             puzzleSliders[sliderDataManagers[index].neighbours[i]].GetComponent<Slider>().value += difference / multipliers[i];
         }
         isSliderMoving = false;
-    }
-
-    void Update()
-    {
-        CheckSliders();
-    }
-
-    private void CheckSliders()
-    {
-        for (int i = 0; i < puzzleSliders.Count; i++)
-        {
-            float newValue = puzzleSliders[i].GetComponent<Slider>().value;
-            if (Mathf.Abs(newValue - sliderDataManagers[i].targetValue) <= margin)
-            {
-                sliderDataManagers[i].switchOn = true;
-            }
-            else
-            {
-                sliderDataManagers[i].switchOn = false;
-            }
-        }
-
-        if (AreAllSwitchesOn())
-        {
-            OnRowCompleted.Invoke(rowIndex);
-        }
     }
 
     private bool AreAllSwitchesOn()
