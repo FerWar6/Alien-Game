@@ -56,6 +56,26 @@ public class AudioManager : MonoBehaviour
     }
 
     // Method to play an audio clip at a specified position
+    public void SetAudioClip(AudioClip clip, Vector3 position, float volume = 1)
+    {
+        // Find an available audio source
+        GameObject openAudioSource = FindEmptyAudioClip();
+        if (openAudioSource != null)
+        {
+            // Move the audio source to the active pool and set its position
+            openAudioSource.transform.parent = activeAudioPool;
+            openAudioSource.transform.position = position;
+
+            // Get the AudioSource component and configure it
+            AudioSource source = openAudioSource.GetComponent<AudioSource>();
+            source.volume = volume;
+            source.clip = clip;
+            source.Play();
+
+            // Start a coroutine to return the audio source to the inactive pool when done
+            StartCoroutine(WaitForSoundToEnd(source, openAudioSource, clip.length));
+        }
+    }
     public void SetAudioClip(AudioClip clip, Vector3 position, float volume = 1, bool is2D = false)
     {
         // Find an available audio source

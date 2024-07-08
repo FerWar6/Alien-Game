@@ -13,11 +13,11 @@ public class Puzzle_SliderData : MonoBehaviour
     [SerializeField] AudioClip switchOnSound;
     [SerializeField] AudioClip switchOffSound;
 
-    [SerializeField] private Image TargetImage;
-    private Image indicator;
+    [SerializeField] private RectTransform Indicator;
+
+    [SerializeField] private SwitchBreakerLampManager lamp;
     private void Start()
     {
-        indicator = GetComponentInChildren<Image>();
         GetComponent<Slider>().onValueChanged.AddListener(CheckIfOn);
     }
     public void ActivateSlider(int sliderIndex, int numberOfSliders, int numberOfNeighbours)
@@ -25,13 +25,9 @@ public class Puzzle_SliderData : MonoBehaviour
         GetComponent<Slider>().value = Random.value;
         targetValue = Random.value;
         float height = GetComponent<RectTransform>().rect.height;
-        float targetypos = Remap(0,1, -height / 2, height / 2, targetValue);
-        Debug.Log(height);
-        Debug.Log(-height / 2);
-        Debug.Log(targetValue);
-        Debug.Log(targetypos);
+        float targetypos = height * targetValue;
 
-        TargetImage.transform.localPosition = new Vector3(TargetImage.transform.localPosition.x, TargetImage.transform.localPosition.y - 1 + targetValue, TargetImage.transform.localPosition.z);
+        Indicator.transform.localPosition = new Vector3(Indicator.transform.localPosition.x, Indicator.transform.localPosition.y + targetypos, Indicator.transform.localPosition.z);
 
         List<int> sliderNumbers = new List<int>();
         for (int i = 0; i < numberOfSliders; i++)
@@ -52,13 +48,12 @@ public class Puzzle_SliderData : MonoBehaviour
     {
         if (switchOn)
         {
-            if (indicator.color == Color.red) AudioManager.instance.SetAudioClip(switchOnSound, transform.position, .2f);
-            indicator.color = Color.green;
+            if(lamp != null) { lamp.SetLight(true); }
+            
         }
         else
         {
-            if (indicator.color == Color.green) AudioManager.instance.SetAudioClip(switchOffSound, transform.position, .3f);
-            indicator.color = Color.red;
+            if (lamp != null) { lamp.SetLight(false); }
         }
     }
     private void CheckIfOn(float input)
@@ -72,9 +67,5 @@ public class Puzzle_SliderData : MonoBehaviour
         {
             switchOn = false;
         }
-    }
-    private float Remap(float value, float from1, float to1, float from2, float to2)
-    {
-        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
 }

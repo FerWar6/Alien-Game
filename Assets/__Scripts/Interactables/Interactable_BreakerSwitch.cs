@@ -22,6 +22,7 @@ public class Interactable_BreakerSwitch : MonoBehaviour, IInteractable
         {
             AudioManager.instance.SetAudioClip(activationClip, transform.position, 1, true);
             PlayerData.instance.OnBreakerActive.Invoke();
+            GetComponent<Animator>().SetTrigger("FlipBreaker");
             Destroy(this);
         }
     }
@@ -33,5 +34,9 @@ public class Interactable_BreakerSwitch : MonoBehaviour, IInteractable
     public void SetMessage(string text)
     {
         message = text;
+    }
+    private void OnDestroy()
+    {
+        if (sliderMan != null) sliderMan.OnPuzzleCompleted.RemoveListener(EnableBreaker);
     }
 }

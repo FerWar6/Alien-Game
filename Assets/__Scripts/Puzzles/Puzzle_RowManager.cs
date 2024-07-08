@@ -10,6 +10,7 @@ public class Puzzle_RowManager : MonoBehaviour
     [Range(1, 3)]
     [SerializeField] private int numberOfRows = 1;
     [SerializeField] private GameObject rowPrefab;
+    [SerializeField] private AudioClip puzzleCompletionSound;
 
     List<Puzzle_SlidersManager> slidersManagers = new List<Puzzle_SlidersManager>();
 
@@ -49,8 +50,13 @@ public class Puzzle_RowManager : MonoBehaviour
     }
     void CompleteRow(int rowIndex)
     {
-        Destroy(slidersManagers[rowIndex].gameObject);
-        //PlayerData.instance.OnExitUI.Invoke();
-
+        StartCoroutine(ExitUIWithDelay(0.5f));
+        OnPuzzleCompleted.Invoke();
+        AudioManager.instance.SetAudioClip(puzzleCompletionSound, transform.position, 1);
+    }
+    private IEnumerator ExitUIWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayerData.instance.OnExitUI.Invoke();
     }
 }

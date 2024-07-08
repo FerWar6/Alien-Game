@@ -52,14 +52,23 @@ public class Puzzle_SlidersManager : MonoBehaviour
         float difference = newValue - previousValue;
 
         List<float> multipliers = new List<float>();
-        multipliers.Add(2f);
-        multipliers.Add(-0.5f);
+        multipliers.Add(0.8f);
+        multipliers.Add(-0.8f);
         previousValues[index] = newValue;
         for (int i = 0; i < numberOfNeighbours; i++)
         {
-            puzzleSliders[sliderDataManagers[index].neighbours[i]].GetComponent<Slider>().value += difference / multipliers[i];
+            puzzleSliders[sliderDataManagers[index].neighbours[i]].GetComponent<Slider>().value += difference * multipliers[i];
         }
         isSliderMoving = false;
+        if (AreAllSwitchesOn())
+        {
+            OnRowCompleted.Invoke(rowIndex);
+            for (int i = 0; i < puzzleSliders.Count; i++)
+            {
+                Slider slider = puzzleSliders[i].GetComponent<Slider>();
+                slider.enabled = false;
+            }
+        }
     }
 
     private bool AreAllSwitchesOn()
