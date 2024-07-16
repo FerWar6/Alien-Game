@@ -52,8 +52,8 @@ public class Puzzle_SlidersManager : MonoBehaviour
         float difference = newValue - previousValue;
 
         List<float> multipliers = new List<float>();
-        multipliers.Add(0.8f);
-        multipliers.Add(-0.8f);
+        multipliers.Add(1);
+        multipliers.Add(-1);
         previousValues[index] = newValue;
         for (int i = 0; i < numberOfNeighbours; i++)
         {
