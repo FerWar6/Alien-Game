@@ -27,7 +27,7 @@ public class Puzzle_SliderData : MonoBehaviour
         float height = GetComponent<RectTransform>().rect.height;
         float targetypos = height * targetValue;
 
-        Indicator.transform.localPosition = new Vector3(Indicator.transform.localPosition.x, Indicator.transform.localPosition.y + targetypos, Indicator.transform.localPosition.z);
+        Indicator.transform.localPosition = new Vector3(Indicator.transform.localPosition.x, (Indicator.transform.localPosition.y - height /2) + targetypos, Indicator.transform.localPosition.z);
 
         List<int> sliderNumbers = new List<int>();
         for (int i = 0; i < numberOfSliders; i++)

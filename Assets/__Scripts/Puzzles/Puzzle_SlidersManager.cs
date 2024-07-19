@@ -18,6 +18,7 @@ public class Puzzle_SlidersManager : MonoBehaviour
     private int numberOfNeighbours = 2;
 
     [HideInInspector] public bool puzzleCompleted = false;
+
     void Start()
     {
         CreatePuzzle();
@@ -29,6 +30,7 @@ public class Puzzle_SlidersManager : MonoBehaviour
         {
             puzzleSliders.Add(child.gameObject);
         }
+        puzzleSliders.RemoveAt(puzzleSliders.Count -1);
         for (int i = 0; i < puzzleSliders.Count; i++)
         {
             Slider slider = puzzleSliders[i].GetComponent<Slider>();

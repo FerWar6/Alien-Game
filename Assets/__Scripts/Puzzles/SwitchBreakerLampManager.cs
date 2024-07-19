@@ -12,11 +12,13 @@ public class SwitchBreakerLampManager : MonoBehaviour
         Light light = GetComponentInChildren<Light>();
         if (on)
         {
+            light.type = LightType.Spot;
             mesh.material = emissiveMat;
-            light.intensity = 0.75f;
+            light.intensity = 0.9f;
         }
         else
         {
+            light.type = LightType.Point;
             mesh.material = nonEmissiveMat;
             light.intensity = 0.2f;
         }
