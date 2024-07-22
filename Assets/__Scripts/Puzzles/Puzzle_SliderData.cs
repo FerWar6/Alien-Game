@@ -6,15 +6,13 @@ using UnityEngine.Audio;
 
 public class Puzzle_SliderData : MonoBehaviour
 {
-    [HideInInspector] public List<int> neighbours = new List<int>();
+    public List<int> links = new List<int>();
+    public List<float> linkAmounts = new List<float>();
+    [Range(0, 1)]
+    public float targetValue = 0;
     [HideInInspector] public bool switchOn = false;
-    [HideInInspector] public float targetValue;
-
-    [SerializeField] AudioClip switchOnSound;
-    [SerializeField] AudioClip switchOffSound;
 
     [SerializeField] private RectTransform Indicator;
-
     [SerializeField] private SwitchBreakerLampManager lamp;
     private void Start()
     {
@@ -23,7 +21,6 @@ public class Puzzle_SliderData : MonoBehaviour
     public void ActivateSlider(int sliderIndex, int numberOfSliders, int numberOfNeighbours)
     {
         GetComponent<Slider>().value = Random.value;
-        targetValue = Random.value;
         float height = GetComponent<RectTransform>().rect.height;
         float targetypos = height * targetValue;
 
@@ -35,14 +32,6 @@ public class Puzzle_SliderData : MonoBehaviour
             sliderNumbers.Add(i);
         }
         sliderNumbers.Remove(sliderIndex);
-
-        for (int i = 0; i < numberOfNeighbours; i++)
-        {
-            int randomIndex = Random.Range(0, sliderNumbers.Count);
-            int randomNeighbor = sliderNumbers[randomIndex];
-            neighbours.Add(randomNeighbor);
-            sliderNumbers.RemoveAt(randomIndex);
-        }
     }
     private void FixedUpdate()
     {

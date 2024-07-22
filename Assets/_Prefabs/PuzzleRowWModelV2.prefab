@@ -254,6 +254,8 @@ MonoBehaviour:
       m_Calls: []
   rowIndex: 0
   puzzleCompleted: 0
+  multiplierOne: 1.5
+  multiplierTwo: -1.5
 --- !u!1001 &2758169374594472950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,6 +263,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7103541187401303339}
     m_Modifications:
+    - target: {fileID: 1585383178676656663, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651994526683931960, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: link1
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: link2
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: targetValue
+      value: 0.265
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.data[0]
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5728830882447753964, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
       propertyPath: m_Name
       value: PuzzleSliderWModelV2 (6)
@@ -373,6 +419,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6095642576052884767, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937437083047636876, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
 --- !u!224 &7621807162536663323 stripped
@@ -387,6 +441,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7103541187401303339}
     m_Modifications:
+    - target: {fileID: 1585383178676656663, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651994526683931960, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: link1
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: link2
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: targetValue
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.data[0]
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.data[1]
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5728830882447753964, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
       propertyPath: m_Name
       value: PuzzleSliderWModelV2 (5)
@@ -499,6 +597,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6095642576052884767, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937437083047636876, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
 --- !u!224 &622025606132287857 stripped
@@ -513,6 +619,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7103541187401303339}
     m_Modifications:
+    - target: {fileID: 1585383178676656663, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651994526683931960, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: link2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: targetValue
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.data[0]
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.data[1]
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5728830882447753964, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
       propertyPath: m_Name
       value: PuzzleSliderWModelV2 (3)
@@ -625,6 +771,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6095642576052884767, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937437083047636876, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
 --- !u!224 &3248287507768239166 stripped
@@ -639,6 +793,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7103541187401303339}
     m_Modifications:
+    - target: {fileID: 1585383178676656663, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651994526683931960, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: link1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: link2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: targetValue
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.data[0]
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.data[1]
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5728830882447753964, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
       propertyPath: m_Name
       value: PuzzleSliderWModelV2 (4)
@@ -751,6 +949,14 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6095642576052884767, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937437083047636876, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
 --- !u!224 &3248287508002071405 stripped
@@ -765,6 +971,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7103541187401303339}
     m_Modifications:
+    - target: {fileID: 1585383178676656663, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651994526683931960, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: link2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: targetValue
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: links.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728830882447753939, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: linkAmounts.Array.data[1]
+      value: -0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5728830882447753964, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
       propertyPath: m_Name
       value: PuzzleSliderWModelV2 (7)
@@ -875,6 +1121,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5728830883441187266, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6095642576052884767, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937437083047636876, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -14,7 +14,7 @@ public class PlayerUI : MonoBehaviour
         PlayerData.instance.OnEnterUI.AddListener(OnEnterUI);
         PlayerData.instance.OnExitUI.AddListener(OnExitUI);
         playerMenu = GetComponentInChildren<PlayerMenuManager>();
-        playerMenu.gameObject.SetActive(false);
+        if(playerMenu != null) playerMenu.gameObject.SetActive(false);
     }
     public void UpdateText(string promptMessage)
     {

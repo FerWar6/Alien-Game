@@ -5,12 +5,17 @@ using UnityEngine;
 public class OpenCloseRollerDoor : MonoBehaviour
 {
 
-    [SerializeField] private Animator anim;
+    private Animator anim;
+    private AudioSource auSource;
+    private bool needsToBeDestroyed = false;
     [SerializeField] private Interactable_Terminal interTer; //interactable Terminal
-
+    [SerializeField] private AudioClip doorOpenClip;
+    [SerializeField] private AudioClip doorStopClip;
     private void Start()
     {
-        if(interTer != null) interTer.OnTerminalStatusChange.AddListener(OpenCloseDoor);
+        anim = GetComponent<Animator>();
+        auSource = GetComponent<AudioSource>();
+        if (interTer != null) interTer.OnTerminalStatusChange.AddListener(OpenCloseDoor);
         else
         {
             Debug.Log("rollerdoor failed to link to interactive terminal script");
@@ -21,11 +26,36 @@ public class OpenCloseRollerDoor : MonoBehaviour
         if (lastTime)
         {
             anim.SetInteger("DoorState", 2);
-            Destroy(this);
+            needsToBeDestroyed = true;
         }
         else
         {
             ToggleAnim();
+        }
+    }
+    private void OnOpenDoor()
+    {
+        if (anim.GetInteger("DoorState") == 1)
+        {
+            auSource.Stop();
+            auSource.clip = doorStopClip;
+            auSource.Play();
+        }
+    }
+    private void OnCloseDoor()
+    {
+        if (anim.GetInteger("DoorState") == 2)
+        {
+            auSource.Stop();
+            auSource.clip = doorStopClip;
+            auSource.Play();
+        }
+    }
+    private void DestroyCheck()
+    {
+        if (needsToBeDestroyed)
+        {
+            Destroy(this);
         }
     }
     void ToggleAnim()
@@ -33,10 +63,14 @@ public class OpenCloseRollerDoor : MonoBehaviour
         if (anim.GetInteger("DoorState") == 0 || anim.GetInteger("DoorState") == 2)
         {
             anim.SetInteger("DoorState", 1);
+            auSource.clip = doorOpenClip;
+            auSource.Play();
         }
         else
         {
             anim.SetInteger("DoorState", 2);
+            auSource.clip = doorOpenClip;
+            auSource.Play();
         }
     }
     private void OnDestroy()

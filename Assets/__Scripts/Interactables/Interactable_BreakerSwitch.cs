@@ -20,7 +20,7 @@ public class Interactable_BreakerSwitch : MonoBehaviour, IInteractable
     {
         if (CanUseBreaker)
         {
-            AudioManager.instance.SetAudioClip(activationClip, transform.position, 1, true);
+            AudioManager.instance.SetAudioClip(activationClip, transform.position, 0.5f, true);
             PlayerData.instance.OnBreakerActive.Invoke();
             GetComponent<Animator>().SetTrigger("FlipBreaker");
             Destroy(this);
