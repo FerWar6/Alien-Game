@@ -5611,6 +5611,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 671153152073849745, guid: d7fa33b5ba6f71d46b2e158dd10bdff7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3533742642586021119, guid: d7fa33b5ba6f71d46b2e158dd10bdff7, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -5659,6 +5663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BreakerBoxPuzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 8595155155035340676, guid: d7fa33b5ba6f71d46b2e158dd10bdff7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4e4b843b141e968468c469ee329cddc5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7fa33b5ba6f71d46b2e158dd10bdff7, type: 3}
 --- !u!4 &4065821144725033148
