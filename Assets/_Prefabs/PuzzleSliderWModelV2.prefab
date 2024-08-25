@@ -359,11 +359,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52044e7290ff1fd4bafecd9ea4e0f469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neighbours: 
-  switchOn: 0
+  links: 
+  linkAmounts: []
   targetValue: 0
-  switchOnSound: {fileID: 8300000, guid: adee955eb1672b145a26fffdd8c5517a, type: 3}
-  switchOffSound: {fileID: 8300000, guid: fc1fc4ed748edc44593a9b6cfc04289e, type: 3}
+  switchOn: 0
   Indicator: {fileID: 4156701561503547616}
   lamp: {fileID: 2148068375005763534}
 --- !u!1 &5728830883441187293
@@ -543,8 +542,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 735e280cfee8922478390b8d56e64f42, type: 2}
-  - {fileID: 2100000, guid: 35bd016675c7bdf4aa5c09a0d53c8ff3, type: 2}
+  - {fileID: 2100000, guid: aec87e30a63ce484cb9598b7e88f99a4, type: 2}
+  - {fileID: 4055253576389172161, guid: 27d85bfa93f673847971ec9e5a6cc0e9, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -578,8 +577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a202e58ccaf6a4f4eaea6e565beed3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nonEmissiveMat: {fileID: 2100000, guid: 735e280cfee8922478390b8d56e64f42, type: 2}
-  emissiveMat: {fileID: 2100000, guid: bfb50f107ef9b0547a7bed0d48dcb2eb, type: 2}
+  nonEmissiveMat: {fileID: 2100000, guid: aec87e30a63ce484cb9598b7e88f99a4, type: 2}
+  emissiveMat: {fileID: 2100000, guid: 7f9cc57e85f624143ada69ea1255da1f, type: 2}
 --- !u!1 &8368845795126452653
 GameObject:
   m_ObjectHideFlags: 0

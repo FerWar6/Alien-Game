@@ -63,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 735e280cfee8922478390b8d56e64f42, type: 2}
-  - {fileID: 2100000, guid: 35bd016675c7bdf4aa5c09a0d53c8ff3, type: 2}
+  - {fileID: 2100000, guid: aec87e30a63ce484cb9598b7e88f99a4, type: 2}
+  - {fileID: 4055253576389172161, guid: 27d85bfa93f673847971ec9e5a6cc0e9, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e01069bb0eaced4fa7b8b267a6bc252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emissiveMat: {fileID: 2100000, guid: bfb50f107ef9b0547a7bed0d48dcb2eb, type: 2}
+  emissiveMat: {fileID: 2100000, guid: 7f9cc57e85f624143ada69ea1255da1f, type: 2}
   sliderMan: {fileID: 7103541187401303336}
 --- !u!1 &6249869243605418809
 GameObject:
@@ -254,8 +254,6 @@ MonoBehaviour:
       m_Calls: []
   rowIndex: 0
   puzzleCompleted: 0
-  multiplierOne: 1.5
-  multiplierTwo: -1.5
 --- !u!1001 &2758169374594472950
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1127,6 +1125,10 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6095642576052884767, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aec87e30a63ce484cb9598b7e88f99a4, type: 2}
     - target: {fileID: 8937437083047636876, guid: b8a14f580827e7e4d851af32357b1272, type: 3}
       propertyPath: m_SortingLayer
       value: 0

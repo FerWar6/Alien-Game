@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/_Scenes/PuzzleTestLevel.unity
     guid: 8019cc2908aa506419c88f157a71f1fe
   - enabled: 1
-    path: Assets/_Scenes/TestTubes.unity
-    guid: d603f9bfd13e46240afc7434ed2af892
+    path: Assets/_Scenes/TestScene.unity
+    guid: 0674fde0f0f22ed459e95a1d886355dc
   m_configObjects: {}

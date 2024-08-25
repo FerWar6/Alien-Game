@@ -17,7 +17,11 @@ public class FirstPersonLook : MonoBehaviour
         // Lock the mouse cursor to the game screen.
         Cursor.lockState = CursorLockMode.Locked;
         if(character == null) { character = PlayerData.instance.playerPos; }
-        
+
+        Vector3 characterEulerAngles = character.localRotation.eulerAngles;
+        Vector3 cameraEulerAngles = transform.localRotation.eulerAngles;
+
+        velocity = new Vector2(characterEulerAngles.y, -cameraEulerAngles.x);
     }
 
     void Update()
